@@ -69,13 +69,13 @@ Provides the gbinder config required for waydroid based on mainline (native) ker
 %install
 mkdir -p %{buildroot}/opt/waydroid
 mkdir -p %{buildroot}/home/waydroid
-cp -r upstream/* %{buildroot}/opt/waydroid
+cp -r ./* %{buildroot}/opt/waydroid
 mkdir -p %{buildroot}/var/lib/
 ln -sf /home/waydroid %{buildroot}/var/lib/waydroid
 mkdir -p %{buildroot}/usr/bin
 ln -sf /opt/waydroid/waydroid.py %{buildroot}/usr/bin/waydroid
-install -D -m644 upstream/dbus/id.waydro.Container.conf %{buildroot}%{_datadir}/dbus-1/system.d/id.waydro.Container.conf
-
+install -D -m644 ./dbus/id.waydro.Container.conf %{buildroot}%{_datadir}/dbus-1/system.d/id.waydro.Container.conf
+cd ..
 install -D -m644 config/anbox-hybris.conf %{buildroot}/etc/gbinder.d/anbox-hybris.conf
 install -D -m644 config/anbox-mainline.conf %{buildroot}/etc/gbinder.d/anbox-mainline.conf
 install -D -m644 config/waydroid-container.service %{buildroot}/%{_unitdir}/waydroid-container.service
